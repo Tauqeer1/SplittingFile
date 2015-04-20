@@ -1,1 +1,6 @@
 E:\unityProjects\SplittingFile\FileSplittingAndMerging\FileSplittingAndMerging\bin\Debug\FileSplittingAndMerging.exe.config
+E:\unityProjects\SplittingFile\FileSplittingAndMerging\FileSplittingAndMerging\bin\Debug\FileSplittingAndMerging.exe
+E:\unityProjects\SplittingFile\FileSplittingAndMerging\FileSplittingAndMerging\bin\Debug\FileSplittingAndMerging.pdb
+E:\unityProjects\SplittingFile\FileSplittingAndMerging\FileSplittingAndMerging\obj\Debug\FileSplittingAndMerging.csprojResolveAssemblyReference.cache
+E:\unityProjects\SplittingFile\FileSplittingAndMerging\FileSplittingAndMerging\obj\Debug\FileSplittingAndMerging.exe
+E:\unityProjects\SplittingFile\FileSplittingAndMerging\FileSplittingAndMerging\obj\Debug\FileSplittingAndMerging.pdb
