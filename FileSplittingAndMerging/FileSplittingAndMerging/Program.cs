@@ -10,18 +10,30 @@ namespace FileSplittingAndMerging
 {
     class Program
     {
-       
         static void Main(string[] args)
         {
-            string sourceFile = @"E:\testFolder\test.txt";
+            List<string> fileCollection;
+            string sourceFile = @"D:\testFolder\test.txt";
             int noOfFiles = 10;
-            bool answer = SplitFile(sourceFile, noOfFiles);
-            Console.WriteLine(answer);
+            SplitFile(sourceFile, noOfFiles);
+            fileCollection = ReadSplittedFiles();
+            foreach (string file in fileCollection)
+            {
+                Thread thread = new Thread(() => Send(file));
+                thread.Start();
+            }
             Console.ReadKey();
         }
-        public static bool SplitFile(string source, int noOfFiles)
+        public static List<string> ReadSplittedFiles()
         {
-            bool split = false;
+            string[] array1;
+            array1 = Directory.GetFiles(@"D:\testFolder\", "*.tmp");
+            List<string> list = array1.Cast<string>().ToList();
+            return list;
+        }
+
+        public static void SplitFile(string source, int noOfFiles)
+        {
             try
             {
                 FileStream fs = new FileStream(source, FileMode.Open, FileAccess.Read);
@@ -32,7 +44,8 @@ namespace FileSplittingAndMerging
                     string baseFileName = Path.GetFileNameWithoutExtension(source);
                     string extension = Path.GetExtension(source);
 
-                    FileStream outputFile = new FileStream(Path.GetDirectoryName(source) + "\\" + baseFileName + "." + i.ToString().PadLeft(5, Convert.ToChar("0")) + extension + ".tmp", FileMode.Create, FileAccess.Write);
+                   FileStream outputFile = new FileStream(Path.GetDirectoryName(source) + "\\" + baseFileName + "." + i.ToString() + extension + ".tmp", FileMode.Create, FileAccess.Write);
+                    
                      string mergeFolder;
                      mergeFolder = Path.GetDirectoryName(source);
 
@@ -52,8 +65,13 @@ namespace FileSplittingAndMerging
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.Message);
-            }
-            return split;
+            }   
         }
+
+        public static void Send(string location)
+        {
+            Console.WriteLine("Hello");
+        }
+
     }
 }
